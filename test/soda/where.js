@@ -36,6 +36,13 @@ describe('where test',function(){
     ast.where.args.value[0].column.should.eql('incident_location')
   });
 
+  it('within_polygon', function() {
+    var ast = Parser.parse('$where=within_polygon(location, \'MULTIPOLYGON (((-87.637714 41.887275, -87.613681 41.886892, -87.625526 41.871555, -87.637714 41.887275)))\')')
+    //inspect(ast);
+
+    ast.where.args.value[1].value.should.containEql('MULTIPOLYGON')
+  });
+
   it('between', function() {
     var ast = Parser.parse('$where=date between \'2015-01-10T12:00:00\' and \'2015-01-10T14:00:00\'')
     //inspect(ast);
@@ -49,10 +56,5 @@ describe('where test',function(){
     var ast = Parser.parse('$where=salary not between \'40000\' and \'150000\'')
     inspect(ast);
   });*/
-
-  it('within_polygon', function() {
-    var ast = Parser.parse('$where=within_polygon(location, \'MULTIPOLYGON (((-87.637714 41.887275, -87.613681 41.886892, -87.625526 41.871555, -87.637714 41.887275)))\')')
-    inspect(ast);
-  })
 
 });
