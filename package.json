@@ -7,7 +7,8 @@
     "url": "git://github.com/alibaba/nquery.git"
   },
   "scripts": {
-    "test": "make test"
+    "build": "./node_modules/pegjs/bin/pegjs peg/nquery.pegjs ./base/nquery.js",
+    "test": "./node_modules/mocha/bin/mocha test/unit --reporter spec"
   },
   "engines": {
     "node": ">=0.8.0"
@@ -17,7 +18,7 @@
   "devDependencies": {
     "pegjs": "=0.7.0",
     "mocha": ">=1.0.0",
-    "should":">=1.2.0" 
+    "should":">=1.2.0"
   },
   "readmeFilename": "README.md",
   "main": "index.js",
